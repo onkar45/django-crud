@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student</title>
+</head>
+<body>
+    <form action="{% url "update" student.roll_number %}" name="student_form" method="post">
+        {% csrf_token %}
+        <p>Name
+            <input type="text" name="name" value="{{student.name}}">
+        </p>
+        <p>Email
+            <input type="email" name="email_id" value="{{student.email_id}}">
+        </p>
+        <p>Roll Number
+            <input type="number" name="roll_number" value="{{student.roll_number}}">
+        </p>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
