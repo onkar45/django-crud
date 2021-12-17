@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Student</title>
 </head>
+
 <body>
-    <form action="{% url "update" student.roll_number %}" name="student_form" method="post">
+    <form action="{% url 'update' student.roll_number %}" name="student_form" method="post" align="center">
         {% csrf_token %}
         <p>Name
             <input type="text" name="name" value="{{student.name}}">
@@ -18,7 +20,14 @@
         <p>Roll Number
             <input type="number" name="roll_number" value="{{student.roll_number}}">
         </p>
-        <button type="submit">Submit</button>
+        <p>Mobile Number
+            <input type="text" name="mobile_number" value="{{student.mobile_number}}">
+        </p>
+        <p>Address
+            <textarea name="address" cols="30" rows="10">{{student.address}}</textarea>
+        </p>
+        <button type="submit">Update</button>
     </form>
 </body>
+
 </html>

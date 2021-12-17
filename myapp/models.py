@@ -5,9 +5,10 @@ class Student(models.Model):
     roll_number = models.IntegerField()
     name = models.CharField(max_length=200)
     email_id = models.EmailField(max_length=256)
-    # marks = models.ManyToManyField("Marks")
+    mobile_number = models.CharField(max_length=15)
+    address = models.TextField()
 
-# class Subject(models.Model):
-#     name = models.CharField(max_length=50)
+    def __str__(self):
+        return f"{str(self.roll_number)} {str(self.name)}"
 
 

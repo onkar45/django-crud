@@ -1,31 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD App using Django</title>
+    <style>
+        table {
+            margin-top: 10px;
+        }
+
+        td {
+            margin: 3px;
+            padding: 3px;
+        }
+    </style>
 </head>
+
 <body>
-    <form name="student_form" method="post">
+    <form name="student_form" method="post" align="center">
         {% csrf_token %}
         <p>Name
-            <input type="text" name="name">
+            <input type="text" name="name" placeholder="Enter Student Name">
         </p>
         <p>Email
-            <input type="email" name="email_id">
+            <input type="email" name="email_id" placeholder="Enter Email ID">
         </p>
         <p>Roll Number
             <input type="number" name="roll_number">
         </p>
-        <button type="submit">Submit</button>
+        <p>Mobile Number
+            <input type="text" name="mobile_number" placeholder="Enter Mobile Number">
+        </p>
+        <p>Address
+            <textarea name="address" cols="30" rows="10" placeholder="Enter Student Address"></textarea>
+        </p>
+        <button type="submit">Add Student</button>
     </form>
-    {% for student in students %}
-        <h2>{{student.roll_number}}</h2>
-        <h4>{{student.name}}</h4>
-        <h3>{{student.email_id}}</h3>
-        <a href="{% url "delete" student.roll_number %}">Delete</a>
-        <a href="{% url "update_student" student.roll_number %}">Update</a>
-    {% endfor %}
+    <table border=2 align="center">
+        <tr>
+            <th>Roll Number</th>
+            <th>Name</th>
+            <th>Email Id</th>
+            <th>Number</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{student.roll_number}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.email_id}}</td>
+            <td>{{student.mobile_number}}</td>
+            <td>{{student.address}}</td>
+            <td><a href="{% url 'delete' student.roll_number %}">Delete</a>
+                | <a href="{% url 'update_student' student.roll_number %}">Update</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
+
 </html>
